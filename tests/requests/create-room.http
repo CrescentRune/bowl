@@ -1,0 +1,14 @@
+POST localhost:5000/api/create
+
+{
+    "userId": "1241231-1241231-123",
+    "name": "HankyPanky"
+}
+
+POST localhost:5000/api/join
+
+{
+    "userId": "1241231-1241231-123",
+    "name": "HankyPanky"
+    
+}
