@@ -3,7 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const { v4: uuidv4 } = require('uuid'); 
 
-const db = require('./db');
+const db = require('./db/db');
 
 db.hello();
 
@@ -33,6 +33,8 @@ app.post('/api/join', (req, res) => {
         name: req.userName,
     }
 
+    console.log(`${req.name}(${req.clientId} is in the house!`);
+
     db.joinRoom(req.roomCode, user);
 });
 
@@ -43,7 +45,7 @@ app.post('/api/create', (req, res) => {
     
     console.log('Creating new room');
 
-    const now = new DateTime();
+    const now = new Date();
     const roomid = new uuidv4();
 
     const uuid = new uuidv4();
@@ -54,18 +56,20 @@ app.post('/api/create', (req, res) => {
         name: req.userName,
     }
 
+    console.log(`${req.name}(${req.clientId} is in the house!`);
+
     const room = {
         owner,
         id: roomid,
-        roomCode: uuid.substr(uuid.length - 4),
+        roomCode: uuid.toString().substr(uuid.length - 4),
         users: [owner]
     }
 
-    db.createRoom();
+    const created_room = db.createRoom(room);
 
-    res.send();
+    res.send(created_room.roomCode);
 
 });
 
 const port = 5000;
-app.listen(5000);
+app.listen(port);
