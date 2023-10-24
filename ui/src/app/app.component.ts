@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
   selector: 'app-root',
   imports: [CommonModule, RouterModule],
   template: `
-    <div>app-root works</div>
     <router-outlet></router-outlet>
   `,
 })
