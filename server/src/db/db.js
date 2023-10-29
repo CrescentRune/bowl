@@ -7,6 +7,7 @@ const generateRoomsTable = `
         started DATETIME,
         status VARCHAR(3),
         owner text,
+        lastupdated DATETIME,
         PRIMARY KEY('id')
     );
 `;
